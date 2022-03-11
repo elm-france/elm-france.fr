@@ -1,16 +1,17 @@
-module Page.License exposing (Data, Model, Msg, page)
+module Page.PourquoiElm exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File
 import Head
 import Head.Seo as Seo
-import Html.Styled exposing (Html, pre, text)
+import Html.Styled exposing (Html, div)
 import Html.Styled.Attributes exposing (class)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Shared
 import View exposing (View)
+import View.Markdown
 
 
 type alias Model =
@@ -25,6 +26,10 @@ type alias RouteParams =
     {}
 
 
+type alias Data =
+    Html Msg
+
+
 page : Page RouteParams Data
 page =
     Page.single
@@ -36,7 +41,8 @@ page =
 
 data : DataSource Data
 data =
-    DataSource.File.rawFile "LICENSE"
+    DataSource.File.rawFile "content/PourquoiElm.md"
+        |> DataSource.map View.Markdown.toHtml
 
 
 head :
@@ -45,22 +51,18 @@ head :
 head _ =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "Elm-Pages Batteries"
+        , siteName = "Elm France"
         , image =
             { url = Pages.Url.external "TODO"
             , alt = "todo"
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "LICENSE"
+        , description = "Pourquoi Elm ?"
         , locale = Nothing
-        , title = "LICENSE"
+        , title = "Pourquoi Elm ?"
         }
         |> Seo.website
-
-
-type alias Data =
-    String
 
 
 view :
@@ -69,10 +71,6 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view _ _ payload =
-    { title = "LICENSE"
-    , body =
-        [ pre
-            [ class "p-4 bg-gray-50" ]
-            [ text payload.data ]
-        ]
+    { title = "Pourquoi Elm ?"
+    , body = [ div [ class "px-6" ] [ payload.data ] ]
     }

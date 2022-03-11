@@ -1,5 +1,5 @@
 {
-  "name": "elm-pages-batteries",
+  "name": "elm-france",
   "scripts": {
     "postinstall": "elm-tooling install",
     "start": "concurrently npm:dev:*",
@@ -22,14 +22,9 @@
     "elm-tooling": "^1.7.0",
     "tailwindcss": "^3.0.13"
   },
-  "author": {
-    "name": "Cédric Soulas",
-    "email": "soulascedric@gmail.com",
-    "url": "https://www.cedricsoulas.com"
-  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cedricss/elm-pages-batteries/issues"
+    "url": "https://github.com/elm-france/elm-france.fr/issues"
   },
-  "homepage": "https://github.com/cedricss/elm-pages-batteries#readme"
+  "homepage": "https://www.elm-france.fr"
 }

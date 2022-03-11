@@ -15,7 +15,7 @@ view config body =
         , mobileMenu config
         , node
             "main"
-            [ class "max-w-7xl mx-auto py-8 px-4 sm:py-12 sm:px-6 lg:px-8"
+            [ class "max-w-7xl mx-auto py-8 sm:py-12"
             , class "bg-white"
             ]
             [ div [] body ]
@@ -37,10 +37,10 @@ layoutHeader config =
                     [ a
                         [ class "font-semibold"
                         , class "rounded"
-                        , class "px-4 py-2 my-2 bg-gray-100"
+                        , class "px-4 py-2 my-2 bg-gray-50"
                         , href "/"
                         ]
-                        [ text "elm-page batteries"
+                        [ text "Elm France"
                         ]
                     ]
                 , div
@@ -62,10 +62,10 @@ layoutHeader config =
                 , div
                     [ class "hidden md:flex items-center justify-end" ]
                     [ a
-                        [ href "/license"
+                        [ href "/pourquoi-elm"
                         , class "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                         ]
-                        [ text "License" ]
+                        [ text "Pourquoi Elm ?" ]
                     ]
                 ]
             ]
@@ -111,12 +111,12 @@ mobileMenu config =
                 [ div
                     []
                     [ a
-                        [ href "/license"
+                        [ href "/pourquoi-elm"
                         , class "text-base font-medium hover:bg-gray-100"
                         , class "px-4 py-2 border rounded-md shadow-sm"
                         , class "w-full flex items-center justify-center"
                         ]
-                        [ text "License" ]
+                        [ text "Pourquoi Elm ?" ]
                     ]
                 ]
             ]
