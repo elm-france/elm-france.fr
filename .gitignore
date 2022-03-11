@@ -1,0 +1,10 @@
+.DS_STORE
+public/style.css
+node_modules/
+elm-stuff/
+dist/
+.elm-pages/
+functions/render/elm-pages-cli.js
+
+# Local Netlify folder
+.netlify

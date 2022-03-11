@@ -1,0 +1,35 @@
+{
+  "name": "elm-pages-batteries",
+  "scripts": {
+    "postinstall": "elm-tooling install",
+    "start": "concurrently npm:dev:*",
+    "build": "npm run build:css && npm run build:elm",
+    "dev:elm": "elm-pages dev",
+    "build:elm": "elm-pages build",
+    "dev:css": "npm run css -- --watch",
+    "build:css": "NODE_ENV=production npm run css -- --minify",
+    "css": "npx tailwindcss -i ./css/style.css -o public/style.css",
+    "deploy": "npm run build && netlify deploy",
+    "deploy:prod": "netlify deploy --prod",
+    "deploy:fast": "npm run build && netlify deploy && netlify deploy --prod"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "concurrently": "^7.0.0",
+    "elm-optimize-level-2": "^0.2.3",
+    "elm-pages": "2.1.11",
+    "elm-review": "^2.7.0",
+    "elm-tooling": "^1.7.0",
+    "tailwindcss": "^3.0.13"
+  },
+  "author": {
+    "name": "Cédric Soulas",
+    "email": "soulascedric@gmail.com",
+    "url": "https://www.cedricsoulas.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cedricss/elm-pages-batteries/issues"
+  },
+  "homepage": "https://github.com/cedricss/elm-pages-batteries#readme"
+}
