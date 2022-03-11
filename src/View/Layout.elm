@@ -1,7 +1,7 @@
 module View.Layout exposing (layoutHeader, view)
 
-import Html.Styled exposing (a, button, div, header, node, span, text)
-import Html.Styled.Attributes exposing (attribute, class, href, type_)
+import Html.Styled exposing (a, button, div, footer, h2, h3, header, li, node, span, text, ul)
+import Html.Styled.Attributes exposing (attribute, class, href, id, type_)
 import Html.Styled.Events exposing (onClick)
 import Machine.Menu exposing (State(..))
 import View.Icons as Icons
@@ -19,6 +19,7 @@ view config body =
             , class "bg-white"
             ]
             [ div [] body ]
+        , layoutFooter
         ]
 
 
@@ -120,4 +121,67 @@ mobileMenu config =
                     ]
                 ]
             ]
+        ]
+
+
+layoutFooter : Html.Styled.Html msg
+layoutFooter =
+    footer
+        [ class "bg-white"
+        , attribute "aria-labelledby" "footer-heading"
+        ]
+        [ div
+            [ class "max-w-7xl border-t border-gray-200 pt-8 mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
+            ]
+            [ div
+                [ class "md:grid md:grid-cols-5 md:gap-8 space-y-12 md:space-y-0"
+                ]
+                [ footerItems "Communauté"
+                    [ { label = "Discord"
+                      , url = "https://discord.gg/ZRvrcu7R3U"
+                      }
+                    , { label = "Twitter"
+                      , url = "https://twitter.com/ElmFrance"
+                      }
+                    ]
+                , footerItems "Sources"
+                    [ { label = "Guide Elm en Français"
+                      , url = "https://github.com/elm-france/guide.elm-lang.org"
+                      }
+                    , { label = "Elm-france.fr"
+                      , url = "https://github.com/elm-france/elm-france.fr"
+                      }
+                    ]
+                , footerItems "Ressources"
+                    [ { label = "Pourquoi Elm ?"
+                      , url = "/pourquoi-elm"
+                      }
+                    ]
+                ]
+            ]
+        ]
+
+
+footerItems : String -> List { url : String, label : String } -> Html.Styled.Html msg
+footerItems title items =
+    div []
+        [ h3
+            [ class "text-sm font-semibold text-gray-400 tracking-wider uppercase" ]
+            [ text title ]
+        , ul
+            [ attribute "role" "list"
+            , class "mt-4 space-y-4"
+            ]
+          <|
+            List.map
+                (\item ->
+                    li []
+                        [ a
+                            [ href item.url
+                            , class "text-base text-gray-500 hover:text-gray-900"
+                            ]
+                            [ text item.label ]
+                        ]
+                )
+                items
         ]
