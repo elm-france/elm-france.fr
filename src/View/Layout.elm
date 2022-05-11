@@ -1,7 +1,7 @@
 module View.Layout exposing (layoutHeader, view)
 
-import Html.Styled exposing (a, button, div, footer, h2, h3, header, li, node, span, text, ul)
-import Html.Styled.Attributes exposing (attribute, class, href, id, type_)
+import Html.Styled exposing (a, button, div, footer, h3, header, li, node, span, text, ul)
+import Html.Styled.Attributes exposing (attribute, class, href, type_)
 import Html.Styled.Events exposing (onClick)
 import Machine.Menu exposing (State(..))
 import View.Icons as Icons
@@ -10,14 +10,12 @@ import View.Icons as Icons
 view : { a | onOpenMobileMenu : msg, mobileMenu : State, onCloseMobileMenu : msg } -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
 view config body =
     div
-        [ class "bg-white z-20 pt-20" ]
+        [ class "bg-white z-20" ]
         [ layoutHeader config
         , mobileMenu config
         , node
             "main"
-            [ class "max-w-7xl mx-auto py-8 sm:py-12"
-            , class "bg-white"
-            ]
+            [ class "max-w-7xl mx-auto py-8 sm:py-0" ]
             [ div [] body ]
         , layoutFooter
         ]
@@ -28,20 +26,24 @@ layoutHeader config =
     header
         []
         [ div
-            [ class "bg-white border-b fixed top-0 inset-x-0 z-50" ]
+            [ class "bg-white inset-x-0 z-50 mb-12 py-4" ]
             [ div
                 [ class "max-w-7xl mx-auto px-4 py-2 sm:px-6 md:space-x-10"
                 , class "flex justify-between items-center md:justify-start"
                 ]
                 [ div
-                    [ class "flex justify-start lg:w-0 lg:flex-1" ]
+                    [ class "flex justify-start lg:flex-1" ]
                     [ a
-                        [ class "font-semibold"
-                        , class "rounded"
-                        , class "px-4 py-2 my-2 bg-gray-50"
+                        [ class "text-3xl font-bold"
+                        , class "flex items-center px-2"
                         , href "/"
                         ]
-                        [ text "Elm France"
+                        [ div
+                            [ class "w-8 h-auto mr-4"
+                            , class "rounded overflow-hidden"
+                            ]
+                            [ Icons.elmFrance ]
+                        , text "Elm France"
                         ]
                     ]
                 , div
@@ -63,10 +65,10 @@ layoutHeader config =
                 , div
                     [ class "hidden md:flex items-center justify-end" ]
                     [ a
-                        [ href "/pourquoi-elm"
+                        [ href "https://twitter.com/elmfrance"
                         , class "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                         ]
-                        [ text "Pourquoi Elm ?" ]
+                        [ text "Prochains évenements" ]
                     ]
                 ]
             ]
@@ -144,17 +146,12 @@ layoutFooter =
                       , url = "https://twitter.com/ElmFrance"
                       }
                     ]
-                , footerItems "Sources"
+                , footerItems "Sur GitHub"
                     [ { label = "Guide Elm en Français"
                       , url = "https://github.com/elm-france/guide.elm-lang.org"
                       }
                     , { label = "Elm-france.fr"
                       , url = "https://github.com/elm-france/elm-france.fr"
-                      }
-                    ]
-                , footerItems "Ressources"
-                    [ { label = "Pourquoi Elm ?"
-                      , url = "/pourquoi-elm"
                       }
                     ]
                 ]
