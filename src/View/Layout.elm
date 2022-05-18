@@ -15,7 +15,7 @@ view config body =
         , mobileMenu config
         , node
             "main"
-            [ class "max-w-7xl mx-auto py-8 sm:py-0" ]
+            [ class "max-w-7xl mx-auto" ]
             [ div [] body ]
         , layoutFooter
         ]
