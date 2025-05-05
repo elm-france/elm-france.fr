@@ -40,11 +40,11 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # - name: Upload built site artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: elm-pages-dist
-      #     path: dist/
+      - name: Upload built site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: elm-pages-dist
+          path: dist/
 
   # Deployment job
   deploy:
